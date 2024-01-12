@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  #######################################
+  #               OPENSSH               #
+  #######################################
+
+  openssh-rpm:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: openssh-rpm
+    container_name: openssh_rpm
+    volumes:
+      - ./rpms/:/root/rpms/
