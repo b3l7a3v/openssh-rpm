@@ -25,28 +25,29 @@ ls ./rpms/x86_64
 ```
 
 #### On the server:
-1) Remove the previous openssh packages:
 
-```
- dnf remove $(dnf list | grep openssh)
-```
-
-2) Install the created rpms (run in the folder with the new rpms):
+1) Install the created rpms (run in the folder with the new rpms):
 
 ```
 dnf install -y * 
 ```
 
-3) Check sshd version:
+2) Check sshd version:
 
 ```
 ssh -V
 ```
 
-4) Set hostkeys permissions in /etc/ssh/:
+3) Set hostkeys permissions in /etc/ssh/:
 
 ```
 sudo chmod 600 /etc/ssh/ssh*
+```
+
+4) Restart sshd service:
+
+```
+systemctl restart sshd
 ```
 
 5) Check sshd_config settings:

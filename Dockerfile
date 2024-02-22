@@ -39,6 +39,8 @@ RUN dnf --enablerepo=powertools install -y imake
 # dnf --enablerepo=powertools install imake
 ###
 
+RUN cd ~/rpmbuild/SOURCES/openssh-portable/contrib/redhat && sed -i "s|without_openssl 1|without_openssl 0|g" ./openssh.spec
+
 RUN echo '################ START BUILD ################'
 RUN cd ~/rpmbuild/SOURCES/openssh-portable/contrib/redhat && rpmbuild -ba openssh.spec
 
